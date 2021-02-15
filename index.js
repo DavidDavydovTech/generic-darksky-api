@@ -45,8 +45,7 @@ router.get('/', async (req, res) => {
     .then( async response => {
       const data = response.data.data;
       if (res.reportError === true) return;
-      console.log(response.data.data)
-      if (typeof data === 'array' && data.length > 0) {
+      if (Array.isArray(data) && data.length > 0) {
         const { latitude, longitude} = data[0];
         return axios({
           method: 'GET',
