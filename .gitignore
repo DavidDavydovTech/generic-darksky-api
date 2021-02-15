@@ -1,3 +1,6 @@
+# Custom rules
+*.secret.*
+
 # Logs
 logs
 *.log
