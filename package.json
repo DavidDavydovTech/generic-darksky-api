@@ -7,8 +7,9 @@
   "author": "David J. Davydov <davydovjd611@gmail.com>",
   "license": "MIT",
   "private": false,
-  "scripts": {
-    "start:dev": "cross-env GENERIC_DARKSKY_API_SHOULD_RUN=1 node index.js"
+  "scripts": {    
+    "start": "cross-env GENERIC_DARKSKY_API_SHOULD_RUN=1 forever index.js",
+    "start:dev": "cross-env GENERIC_DARKSKY_API_SHOULD_RUN=1 nodemon index.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
