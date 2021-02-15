@@ -1,0 +1,10 @@
+{
+  "name": "generic-darksky-api",
+  "version": "1.0.0",
+  "description": "A generic Dark Sky based web API for North Western Mutual.",
+  "main": "index.js",
+  "repository": "https://github.com/DavidDavydovTech/generic-darksky-api",
+  "author": "David J. Davydov <davydovjd611@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
