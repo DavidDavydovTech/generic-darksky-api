@@ -90,6 +90,7 @@ router.get('/', async (req, res) => {
 
 
 // -- Launch App --
+// Note, this won't run if this file is being imported in to another file.
 if (GENERIC_DARKSKY_API_SHOULD_RUN === '1') {
   try {
     const port = Number.parseInt(GENERIC_DARKSKY_API_PORT);
