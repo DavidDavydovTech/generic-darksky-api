@@ -12,10 +12,41 @@ const {
 } = env;
 const app = express();
 const router = express.Router();
+router.use(async (req, res, next) => {
+  const { GENERIC_DARKSKY_API_DEBUG } = req.headers;
+  if (GENERIC_DARKSKY_API_DEBUG) {
+    res.reportError = async ({devMessage, status, errorObject}) => {
+      const { 
+        name, 
+        message,
+        fileName,
+        lineNumber,
+        columnNumber,
+      } = errorObject;
 
+      const error = {
+        message: devMessage,
+        errorObject: {
+          name,
+          message,
+          location: `${fileName}: line ${lineNumber} column ${columnNumber}`,
+        }
+      };
+
+      res.status(status).send(error);
+      res.reportError = true;
+    }
+  } else {
+    res.reportError = (devMessage, status) => res.status(status).send({ error: { message: devMessage }})
+    res.reportError = true;
+  }
+  next();
+})
 
 // -- Main --
+router.get('/', (res, req) => {
 
+})
 
 
 // -- Launch App --
@@ -36,4 +67,5 @@ if (GENERIC_DARKSKY_API_SHOULD_RUN === '1') {
 // -- Exports --
 module.exports = {
   WeatherApp: app,
+  WeatherRouter: router,
 };
