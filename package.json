@@ -7,6 +7,9 @@
   "author": "David J. Davydov <davydovjd611@gmail.com>",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "start:dev": "node index.js"
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
