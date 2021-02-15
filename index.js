@@ -1,6 +1,12 @@
 // -- Package imports --
 const dotenv = require('dotenv');
 const express = require('express');
+const axios = require('axios');
+
+
+// -- Other Imports --
+const reportError = require('./lib/middleware/reportError');
+const config = require('./config.secret.js');
 
 
 // -- Setup --
@@ -12,41 +18,30 @@ const {
 } = env;
 const app = express();
 const router = express.Router();
-router.use(async (req, res, next) => {
-  const { GENERIC_DARKSKY_API_DEBUG } = req.headers;
-  if (GENERIC_DARKSKY_API_DEBUG) {
-    res.reportError = async ({devMessage, status, errorObject}) => {
-      const { 
-        name, 
-        message,
-        fileName,
-        lineNumber,
-        columnNumber,
-      } = errorObject;
+app.use(router);
+router.use(reportError);
 
-      const error = {
-        message: devMessage,
-        errorObject: {
-          name,
-          message,
-          location: `${fileName}: line ${lineNumber} column ${columnNumber}`,
-        }
-      };
-
-      res.status(status).send(error);
-      res.reportError = true;
-    }
-  } else {
-    res.reportError = (devMessage, status) => res.status(status).send({ error: { message: devMessage }})
-    res.reportError = true;
-  }
-  next();
-})
 
 // -- Main --
-router.get('/', (res, req) => {
-
-})
+router.get('/', async (req, res) => {
+  const {
+    address
+  } = req.query;
+  console.log(config.APIKeys.positionStack)
+  axios({
+    method: 'GET',
+    url: 'http://api.positionstack.com/v1/forward',
+    params: {
+      access_key: config.APIKeys.positionStack,
+      query: '1600 Pennsylvania Ave NW, Washington DC'
+    }
+  })
+    .then( async response => res.send(response.data))
+    .catch( async err => {
+      console.log(err.response.data)
+      res.reportError({devMessage: 'Unknown error', status: 500, errorObject: err})
+    })
+});
 
 
 // -- Launch App --
