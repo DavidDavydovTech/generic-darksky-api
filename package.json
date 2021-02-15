@@ -7,7 +7,7 @@
   "author": "David J. Davydov <davydovjd611@gmail.com>",
   "license": "MIT",
   "private": false,
-  "scripts": {    
+  "scripts": {
     "prep": "yarn install && yarn -cwd ~/client/front/ prep",
     "prep:client": "yarn -cwd ~/client/front/ install",
     "prep:frontend": "yarn -cwd ~/client/frontend/ install && yarn -cwd ~/client/frontend/ build",
@@ -15,6 +15,7 @@
     "start:dev": "cross-env GENERIC_DARKSKY_API_SHOULD_RUN=1 nodemon index.js"
   },
   "dependencies": {
+    "@jsdevtools/readdir-enhanced": "^6.0.4",
     "axios": "^0.21.1",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
