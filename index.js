@@ -45,22 +45,17 @@ router.get('/', async (req, res) => {
     .then( async response => {
       const data = response.data.data;
       if (res.reportError === true) return;
+      console.log(response.data.data)
       if (typeof data === 'array' && data.length > 0) {
         const { latitude, longitude} = data[0];
         return axios({
           method: 'GET',
           url: `https://api.darksky.net/forecast/${darkSky}/${latitude},${longitude}`
         });
-      } else if (typeof data !== 'array') {
-        throw {
-          message: 'Got an unexpected response while trying to get the whether. Please wait a few minutes or contact our support team.',
-          status: 500,
-        }
       } else {
-        throw {
-          message: 'Invalid address or location (did you make a typo?)',
-          status: 400,
-        }
+        const err = new Error('Invalid address or location (did you make a typo?)');
+        err.status = 400;
+        throw err;
       }
     })
     .then( async response => {
@@ -74,11 +69,23 @@ router.get('/', async (req, res) => {
       // line at the top of every then statement. This route doesn't
       // need it, but it's used anyway as an example until more routes
       // are added.
-      res.reportError({
-        devMessage: err.message, 
-        status: err.status || 500, 
-        errorObject: err instanceof Error ? err : null
-      });
+      console.log(err.isAxiosError, err.statusCode)
+      if (err.isAxiosError === true) {
+        const { status, data } = err.response;
+        res.reportError({
+          devMessage: 'Got an error while trying to reach an external API', 
+          status, 
+          errorObject: err,
+          additionalDetails: data
+        });
+      } else {
+        res.reportError({
+          devMessage: err.message, 
+          status: err.status || 500, 
+          errorObject: err instanceof Error ? err : null,
+          additionalDetails: err.response
+        });
+      }
     })
 });
 
