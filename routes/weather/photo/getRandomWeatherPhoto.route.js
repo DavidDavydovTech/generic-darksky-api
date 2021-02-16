@@ -21,12 +21,10 @@ router.get('/', async (req, res) => {
       res.status(200).send(data);
     })
     .catch( async err => {
-      // NOTE: Sometimes you can get away with only 1 catch like in 
-      // this route, but if you can't you'll need to use the
-      //  `if (res.reportError === true) return;`
-      // line at the top of every then statement. This route doesn't
-      // need it, but it's used anyway as an example until more routes
-      // are added.
+      // NOTE: What's the point in having a reporter built in to the 
+      // res object if I need to copy-paste code anyway?... Fix this.
+      // TODO: Make the error reporter check for axios errors on its 
+      // own. 
       if (err.isAxiosError === true) {
         const { status, data } = err.response;
         res.reportError({
