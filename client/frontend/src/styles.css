@@ -18,3 +18,12 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.center-col {
+  @apply flex flex-col justify-center items-center;
+}
+
+.title {
+  @apply text-9xl font-bold font-mono underline mb-8;
+  text-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 5px 15px rgba(0,0,0,0.25);
+  color: white
+}
