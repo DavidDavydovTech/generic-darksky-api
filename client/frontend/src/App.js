@@ -15,10 +15,10 @@ class App extends React.Component {
           <Route path="/forecast">
             Forecast
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             Home
           </Route>
-          <Route path="/*">
+          <Route path="*">
             404
           </Route>
         </Switch>
