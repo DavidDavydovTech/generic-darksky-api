@@ -6,4 +6,9 @@
 
 html, body, #app {
   overflow: hidden;
+  @apply w-full h-full;
+}
+
+#app {
+  @apply flex flex-col justify-center items-center;
 }
