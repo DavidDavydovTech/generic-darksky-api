@@ -16,9 +16,8 @@ const {
   GENERIC_DARKSKY_API_SHOULD_RUN
 } = env;
 const app = express();
-const router = express.Router();
 app.use(reportError);
-app.use(routeReducer);
+app.use('/api', routeReducer);
 
 
 
