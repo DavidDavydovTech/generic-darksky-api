@@ -1,16 +1,28 @@
 
 import React from "react";
+import { Router, Switch, Route } from 'react-router-dom';
+import { createBrowserHistory } from "history";
 import { hot } from 'react-hot-loader/root';
+
+const history = createBrowserHistory();
 
 class App extends React.Component {
   render() {
     const { name } = this.props;
     return (
-      <>
-        <h1 className="text-4xl text-white bg-black">
-          Hello {name}
-        </h1>
-      </>
+      <Router history={history}>
+        <Switch>
+          <Route path="/forecast">
+            Forecast
+          </Route>
+          <Route path="/">
+            Home
+          </Route>
+          <Route path="/*">
+            404
+          </Route>
+        </Switch>
+      </Router>
     );
   }
 }
