@@ -31,6 +31,9 @@ router.get('/', async (req, res) => {
         throw err;
       }
     })
+    .then( response => {
+      res.status(200).send(response.data)
+    })
     .catch( async err => {
       // NOTE: Sometimes you can get away with only 1 catch like in 
       // this route, but if you can't you'll need to use the
@@ -38,7 +41,6 @@ router.get('/', async (req, res) => {
       // line at the top of every then statement. This route doesn't
       // need it, but it's used anyway as an example until more routes
       // are added.
-      console.log(err.isAxiosError, err.statusCode)
       if (err.isAxiosError === true) {
         const { status, data } = err.response;
         res.reportError({
