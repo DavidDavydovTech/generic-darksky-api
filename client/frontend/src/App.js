@@ -4,6 +4,10 @@ import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from "history";
 import { hot } from 'react-hot-loader/root';
 
+// Components
+import Home from './components/home';
+
+// Vars
 const history = createBrowserHistory();
 
 class App extends React.Component {
@@ -16,7 +20,7 @@ class App extends React.Component {
             Forecast
           </Route>
           <Route exact path="/">
-            Home
+            <Home />
           </Route>
           <Route path="*">
             404
