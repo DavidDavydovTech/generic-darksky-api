@@ -5,6 +5,7 @@ import axios from 'axios';
 const Home = (props) => {
   const [ address, setAddress ] = useState('');
   const history = useHistory();
+  const goToForecast = () => history.push(`/forecast?address=${address}`);
   // In a normal project you'd use redux or something to set the 
   // background image, but this project is too small for that to be 
   // worth setting up.
@@ -13,7 +14,10 @@ const Home = (props) => {
   return (
     <div className="center-col">
       <h1 className="title">Weather App</h1>
-      <form onSubmit={ e => e.preventDefault() }>
+      <form onSubmit={ e => {
+        e.preventDefault();
+        goToForecast();
+      }}>
         <input
           className="px-6 py-4 text-3xl m-4 rounded-xl font-sans shadow-xl"
           placeholder="Type in an address"
@@ -24,7 +28,7 @@ const Home = (props) => {
       </form>
       <button 
         className="rounded-full bg-white text-3xl mt-6 p-4 shadow-xl transform duration-700 hover:scale-150 hover:bg-green-200 hover:animate-ping"
-        onClick={() => history.push(`/forecast?address=${address}`) }
+        onClick={ goToForecast }
       >
         🔍
       </button>
