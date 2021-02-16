@@ -1,8 +1,7 @@
 
 import React from "react";
-import { Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory } from "history";
-import { hot } from 'react-hot-loader/root';
 
 // Components
 import Home from './components/home';
@@ -22,7 +21,7 @@ const App = () => {
           <Forecast />
         </Route>
         <Route exact path="*">
-          404
+          <h1 className="title">404 Not Found</h1>
         </Route>
       </Switch>
     </Router>
