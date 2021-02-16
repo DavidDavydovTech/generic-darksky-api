@@ -9,27 +9,25 @@ import Home from './components/home';
 import Forecast from './components/forecast';
 
 // Vars
-const history = createBrowserHistory();
+const history = createBrowserHistory({forceRefresh:true});
 
-class App extends React.Component {
-  render() {
-    const { name } = this.props;
-    return (
-      <Router history={history}>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/forecast">
-            <Forecast />
-          </Route>
-          <Route exact path="*">
-            404
-          </Route>
-        </Switch>
-      </Router>
-    );
-  }
-}
+const App = () => {
+  return (
+    <Router history={history}>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/forecast">
+          <Forecast />
+        </Route>
+        <Route exact path="*">
+          404
+        </Route>
+      </Switch>
+    </Router>
+  )
+};
 
-export default hot(App);
+// export default hot(App);
+export default App;
