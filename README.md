@@ -11,8 +11,8 @@ Generic Darksky API for North Western Mutual
  5. Open your terminal/command line in the folder containing this readme file.
  6. Type `yarn prep` and hit enter.
  7. Type `yarn start:dev` to start the server in development mode. 
-    * Alternatively check [this](#scripts) list of scripts for other actions.
-<a name="headers"/>
+    * Alternatively check the Scripts for a full list.
+
 ## Scripts
  * **`yarn prep`:** Installs the yarn dependancies and runs scripts in the client folder to install and build the frontend.
  * **`yarn start`:** Starts the server via `forever`.

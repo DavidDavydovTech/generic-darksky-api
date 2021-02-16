@@ -1,6 +1,6 @@
 {
   "name": "generic-darksky-api",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "A generic Dark Sky based web API for North Western Mutual.",
   "main": "index.js",
   "repository": "https://github.com/DavidDavydovTech/generic-darksky-api",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "prep": "yarn install && yarn -cwd ~/client/frontend/ prep",
+    "prep": "yarn install && yarn -cwd ~/client/frontend/ install && yarn -cwd ~/client/frontend/ build-prod",
     "start": "cross-env GENERIC_DARKSKY_API_SHOULD_RUN=1 forever index.js",
     "start:dev": "cross-env-shell GENERIC_DARKSKY_API_SHOULD_RUN=1 \"nodemon index.js\""
   },
