@@ -6,9 +6,14 @@ const Home = (props) => {
   const [ address, setAddress ] = useState('');
   const history = useHistory();
   const goToForecast = () => history.push(`/forecast?address=${address}`);
-  // In a normal project you'd use redux or something to set the 
+  // NOTE: In a normal project you'd use redux or something to set the 
   // background image, but this project is too small for that to be 
   // worth setting up.
+  // NOTE: This is supposed to be using the /weather/photo API
+  // but due to reasons mentioned in that API's comments this
+  // current frontend uses unsplash at the time of completion.
+  // In a real project this frontend would obviously be using
+  // the API since its proxying requests via our API key.
   document.body.style.backgroundImage = `url(https://source.unsplash.com/1920x1280/?bright,sunny,scenery)`
 
   return (

@@ -21,6 +21,11 @@ const Forecast = (props) => {
           setData(response.data);
           console.log(response.data)
           const currentWeather = response.data.currently.summary.toLowerCase();
+          // NOTE: This is supposed to be using the /weather/photo API
+          // but due to reasons mentioned in that API's comments this
+          // current frontend uses unsplash at the time of completion.
+          // In a real project this frontend would obviously be using
+          // the API since its proxying requests via our API key.
           document.body.style.backgroundImage = `url(https://source.unsplash.com/1920x1280/?bright,${currentWeather},scenery)`
   
         })
