@@ -6,6 +6,7 @@ import { hot } from 'react-hot-loader/root';
 
 // Components
 import Home from './components/home';
+import Forecast from './components/forecast';
 
 // Vars
 const history = createBrowserHistory();
@@ -16,11 +17,11 @@ class App extends React.Component {
     return (
       <Router history={history}>
         <Switch>
-          <Route path="/forecast">
-            Forecast
-          </Route>
           <Route exact path="/">
             <Home />
+          </Route>
+          <Route path="/forecast">
+            <Forecast />
           </Route>
           <Route path="*">
             404
