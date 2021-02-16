@@ -3,7 +3,8 @@ Generic Darksky API for North Western Mutual
 
 ## Getting Started
  1. Edit the `config.example.js` file to contain your API keys.
-  * This project uses positionstack. If you're missing an API for them you can get one [here](https://positionstack.com/signup/free).
+    * This project uses **pexels**. If you're missing an API for them you can signup [here](https://www.pexels.com/onboarding/) and view more about their api [here](https://www.pexels.com/api/).
+    * This project uses **positionstack**. If you're missing an API for them you can get one [here](https://positionstack.com/signup/free).
  2. Change the name of `config.example.js` to `config.secret.js`. 
  3. Install [NodeJS](https://nodejs.org/en/) (14.15.5 prefered) on your system.
  4. Install [Yarn](https://classic.yarnpkg.com/en/docs/install/) v1.x on your system.
