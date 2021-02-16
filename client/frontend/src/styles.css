@@ -9,6 +9,12 @@ html, body, #app {
   @apply w-full h-full;
 }
 
+body {
+  @apply bg-center bg-cover;
+}
+
 #app {
   @apply flex flex-col justify-center items-center;
+  backdrop-filter: blur(10px);
 }
+
