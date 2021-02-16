@@ -4,9 +4,9 @@
 
 @tailwind utilities;
 
-html, body, #app {
+html, body {
   overflow: hidden;
-  @apply w-full h-full;
+  @apply w-full h-full bg-black;
 }
 
 body {
@@ -14,7 +14,7 @@ body {
 }
 
 #app {
-  @apply flex flex-col justify-center items-center;
+  @apply flex flex-col justify-center items-center w-full h-full overflow-hidden;
   backdrop-filter: blur(10px);
 }
 
