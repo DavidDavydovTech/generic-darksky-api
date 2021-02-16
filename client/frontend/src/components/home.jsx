@@ -27,7 +27,7 @@ const Home = (props) => {
         />
       </form>
       <button 
-        className="rounded-full bg-white text-3xl mt-6 p-4 shadow-xl transform duration-700 hover:scale-150 hover:bg-green-200 hover:animate-ping"
+        className="rounded-full bg-white text-3xl mt-6 p-4 shadow-xl transform duration-700 hover:scale-150 hover:bg-gray-300 hover:animate-ping"
         onClick={ goToForecast }
       >
         🔍
