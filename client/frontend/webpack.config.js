@@ -1,6 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
   entry: [
@@ -30,10 +33,6 @@ const config = {
           },
           'postcss-loader'
         ]
-      },
-      {
-        test: /\.svg$/,
-        use: 'file-loader'
       }
     ]
   },
@@ -47,12 +46,21 @@ const config = {
     }
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    historyApiFallback: true
   },
   plugins: [
+    // new CopyPlugin({
+    //   patterns: [{ from: './src/index.html' }],
+    // }),
     new HtmlWebpackPlugin({
       appMountId: 'app',
       filename: 'index.html'
+    }),
+    new CleanWebpackPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      openAnalyzer: false,
     })
   ],
   optimization: {
