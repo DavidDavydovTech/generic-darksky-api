@@ -1,12 +1,15 @@
 // -- Package imports --
 const dotenv = require('dotenv');
 const express = require('express');
-const axios = require('axios');
+const cookieParser = require('cookie-parser');
+const compression = require('compression');
+const cors = require('cors');
 
 
 // -- Other Imports --
 const reportError = require('./lib/middleware/reportError');
 const routeReducer = require('./routes/routeReducer');
+const clientRouter = require('./client/client.router');
 
 // -- Setup --
 // Get default ENV from
@@ -16,8 +19,13 @@ const {
   GENERIC_DARKSKY_API_SHOULD_RUN
 } = env;
 const app = express();
+app.use(cors());
+app.use(cookieParser());
+app.use(compression());
+// app.use(express.json()); // Add back when you add put/post routes
 app.use(reportError);
 app.use('/api', routeReducer);
+app.use('/*', clientRouter)
 
 
 
