@@ -8,7 +8,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "prep": "yarn install && yarn -cwd ~/client/frontend/ install && yarn -cwd ~/client/frontend/ build-prod",
+    "prep": "yarn-recursive -cmd install && yarn build:frontend",
+    "build:frontend": "yarn -cwd ~/client/frontend/ build-prod",
     "start": "cross-env GENERIC_DARKSKY_API_SHOULD_RUN=1 forever index.js",
     "start:dev": "cross-env-shell GENERIC_DARKSKY_API_SHOULD_RUN=1 \"nodemon index.js\""
   },
@@ -23,6 +24,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "forever": "^3.0.4",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "yarn-recursive": "^1.1.0"
   }
 }

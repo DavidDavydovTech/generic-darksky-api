@@ -9,8 +9,9 @@ Generic Darksky API for North Western Mutual
  3. Install [NodeJS](https://nodejs.org/en/) (14.15.5 prefered) on your system.
  4. Install [Yarn](https://classic.yarnpkg.com/en/docs/install/) v1.x on your system.
  5. Open your terminal/command line in the folder containing this readme file.
- 6. Type `yarn prep` and hit enter.
- 7. Type `yarn start:dev` to start the server in development mode. 
+ 6. Type `cd client/frontend` + `enter` then `yarn install` + `enter` and hit enter.
+ 6. Type `yarn build-prod` and hit `enter`.
+ 7. Type `cd ../../` + `enter` then `yarn install` + `enter` then `yarn start:dev` + `enter` to start the server in development mode. 
     * Alternatively check the Scripts for a full list.
 
 ## Scripts
